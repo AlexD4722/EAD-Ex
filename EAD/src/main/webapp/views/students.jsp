@@ -9,13 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
+    <% if (request.getAttribute("error") != null) { %>
+<div class="alert alert-danger">
+    <%= request.getAttribute("error") %>
+</div>
+    <% } %>
 <div class="container">
     <div class="container flex gap-10">
         <a href="add-student" class="btn btn-primary">
-            <i class="fas fa-plus"></i>  Student
+            <i class="fas fa-plus"></i> Student
         </a>
         <a href="add-score" class="btn btn-primary">
-            <i class="fas fa-plus"></i>  Score
+            <i class="fas fa-plus"></i> Score
         </a>
     </div>
     <h2>Students List</h2>
@@ -40,17 +45,26 @@
             for (StudentDto student : students) {
         %>
         <tr>
-            <td><%= count++ %></td>
-            <td><%= student.getCode() != null ? student.getCode() : "" %></td>
-            <td><%= student.getName() != null ? student.getName() : "" %></td>
-            <td><%= student.getSubjectName() != null ? student.getSubjectName() : "" %></td>
-            <td><%= student.getScore1() != null ? student.getScore1() : "" %></td>
-            <td><%= student.getScore2() != null ? student.getScore2() : "" %></td>
-            <td><%= student.getCredit() != 0 ? student.getCredit() : "" %></td>
-            <td><%= student.getGrade() != null ? student.getGrade() : "" %></td>
+            <td><%= count++ %>
+            </td>
+            <td><%= student.getCode() != null ? student.getCode() : "" %>
+            </td>
+            <td><%= student.getName() != null ? student.getName() : "" %>
+            </td>
+            <td><%= student.getSubjectName() != null ? student.getSubjectName() : "" %>
+            </td>
+            <td><%= student.getScore1() != null ? student.getScore1() : "" %>
+            </td>
+            <td><%= student.getScore2() != null ? student.getScore2() : "" %>
+            </td>
+            <td><%= student.getCredit() != 0 ? student.getCredit() : "" %>
+            </td>
+            <td><%= student.getGrade() != null ? student.getGrade() : "" %>
+            </td>
             <td>
                 <!-- Edit button with icon -->
-                <a href="edit-student" class="btn btn-primary">
+                <a href="edit-student?id=<%= student.getId() %>&subjectId=<%= student.getSubjectId() %>"
+                   class="btn btn-primary">
                     <i class="fas fa-edit"></i>
                 </a>
             </td>

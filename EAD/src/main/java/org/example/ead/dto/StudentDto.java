@@ -19,6 +19,7 @@ public class StudentDto {
     int id;
     String code;
     String name;
+    int subjectId;
     String subjectName;
     BigDecimal score1;
     BigDecimal score2;

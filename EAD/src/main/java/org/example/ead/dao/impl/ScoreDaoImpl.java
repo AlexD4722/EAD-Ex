@@ -45,4 +45,32 @@ public class ScoreDaoImpl implements ScoreDao {
             return false;
         }
     }
+
+    @Override
+    @Transactional
+    public Boolean updateScore(int id, CreateScoreDto createScoreDto) {
+        try {
+            // Retrieve the Score object from the database
+            Score score = entityManager.find(Score.class, id);
+
+            // If the Score object is not found, return false
+            if (score == null) {
+                return false;
+            }
+
+            // Update the Score object with the new values
+            score.setScore1(createScoreDto.getScore1());
+            score.setScore2(createScoreDto.getScore2());
+            score.setStudent(studentDao.findById(createScoreDto.getStudentId()));
+            score.setSubject(subjectDao.findById(createScoreDto.getSubjectId()));
+
+            // Save the updated Score object back to the database
+            entityManager.merge(score);
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

@@ -8,6 +8,7 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<%--<a href="hello-servlet">Hello Servlet Nguyễn Tuấn Vinh</a>--%>
+<a href="student-servlet">Go Home</a>
 </body>
 </html>
